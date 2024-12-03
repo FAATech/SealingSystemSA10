@@ -15,6 +15,7 @@
     <Implicit_KindOfTask>{0b926ba6-0d6f-4a72-84e1-76ce2306f170}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{b3252cbd-0135-4342-bc42-2cfbfffd31b7}</Implicit_Jitter_Distribution>
     <LibraryReferences>{0b7de375-5b17-4076-a6b2-43ba1ab099cd}</LibraryReferences>
+    <Released>false</Released>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="PlcTask.TcTTO">
@@ -58,6 +59,20 @@
     <None Include="PLC1.tmc">
       <SubType>Content</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderResolution Include="SG_Servo">
+      <Resolution>SG_Servo, 4.0.25 (SG)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_Standard">
+      <Resolution>Tc2_Standard, 3.3.3.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc2_System">
+      <Resolution>Tc2_System, 3.6.2.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
+    <PlaceholderResolution Include="Tc3_Module">
+      <Resolution>Tc3_Module, 3.3.23.0 (Beckhoff Automation GmbH)</Resolution>
+    </PlaceholderResolution>
   </ItemGroup>
   <ProjectExtensions>
     <PlcProjectOptions>
