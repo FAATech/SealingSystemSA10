@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="DeviceState" Id="{1859fefa-b38d-4207-adce-aabf25f3f954}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM DeviceState
+VAR
+	nDev1_DevState AT %I* : UINT;
+	nDev4_DevState AT %I* : UINT;
+	nProfinetState AT %I* : UINT;
+	nPnIoBoxState AT %I* : UINT;
+	nPnIoBoxCtrl AT %Q* : UINT;
+	nState		: UINT;
+	bReset		: BOOL;
+	bErrorBit	: BOOL;
+	tDelay		: TON;
+	tPulse		: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[;
+(*
+bErrorBit		:= nPnIoBoxState.3;
+nPnIoBoxCtrl.0	:= bReset;
+
+CASE nState OF
+	
+	0:
+	IF nProfinetState <> 8 OR bErrorBit THEN
+		tDelay(IN:=TRUE , PT:=T#5S);
+		IF tDelay.Q THEN
+			tPulse(IN:=TRUE , PT:=T#1S);
+			bReset	:= TRUE;
+			nState	:= 10;
+		END_IF
+	ELSE
+		tDelay(IN:=FALSE);	
+	END_IF
+	
+	10:
+	tPulse();
+	IF tPulse.Q THEN
+		bReset	:= FALSE;
+		tDelay(IN:=FALSE);
+		tPulse(IN:=FALSE);
+		nState	:= 0;	
+	END_IF
+	
+END_CASE
+*)
+
+]]></ST>
+    </Implementation>
+    <LineIds Name="DeviceState">
+      <LineId Id="84" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="83" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="26" Count="0" />
+      <LineId Id="29" Count="1" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="53" Count="1" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="28" Count="0" />
+      <LineId Id="50" Count="0" />
+      <LineId Id="31" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="42" Count="0" />
+      <LineId Id="45" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="65" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="27" Count="0" />
+      <LineId Id="82" Count="0" />
+      <LineId Id="22" Count="0" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

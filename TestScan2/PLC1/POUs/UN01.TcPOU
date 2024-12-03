@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="UN01" Id="{5d2b8051-17bd-436e-9b44-f41d4adefe03}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM UN01
+VAR
+	EM04_M1 : SG_Servo.FB_EL72XX;
+	inf_EM04_M1 : SG_Servo.FB_ItfServo;
+	EM05_M1 : SG_Servo.FB_EL72XX;
+	inf_EM05_M1 : SG_Servo.FB_ItfServo;
+	EM07_M1 : SG_Servo.FB_EL72XX;
+	inf_EM07_M1 : SG_Servo.FB_ItfServo;
+	EM08_M1 : SG_Servo.FB_EL72XX;
+	inf_EM08_M1 : SG_Servo.FB_ItfServo;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//EM04 Pallet conveyor
+inf_EM04_M1.servo := EM04_M1;
+inf_EM04_M1();
+//EM05 Pallet conveyor
+inf_EM05_M1.servo := EM05_M1;
+inf_EM05_M1();
+//EM07 Tub transfer
+inf_EM07_M1.servo := EM07_M1;
+inf_EM07_M1();
+//EM08 Tub transfer in
+inf_EM08_M1.servo := EM08_M1;
+inf_EM08_M1();]]></ST>
+    </Implementation>
+    <LineIds Name="UN01">
+      <LineId Id="114" Count="10" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
